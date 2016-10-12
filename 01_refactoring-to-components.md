@@ -10,8 +10,8 @@ Now, your task is refactoring the rest of this solution.
 2. If you don't manage to install ``Clear Cache`` make sure to disable caching in the ``network`` tab within the dev tools (F12) in Chrome.
 2. Open the root folder of the project in Visual Studio Code. The root folder is the folder that contains the file ``tsconfig.json``.
 3. Compile the project with CTRL+SHIFT+b (*b* like build) to make sure that there are no type script errors.
-	a) When Visual Studio asks you to create a build task, choose the option TypeScript.
-	b) When, and only when, Visual Studio Code creates a task.json after that, update it with the following snippet:
+	- When Visual Studio asks you to create a build task, choose the option TypeScript.
+	- When, and only when, Visual Studio Code creates a task.json after that, update it with the following snippet:
 	 
 		
 		{
