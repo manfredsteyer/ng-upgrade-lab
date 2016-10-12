@@ -300,3 +300,8 @@ Now, your task is refactoring the rest of this solution.
 3. Compile the project to make sure that there are no TypeScript errors.
 4. Refresh the project in your browser and ensure that the refactored project still works.
 
+## Life Cycle Hooks
+
+1. Look up the presented slides regarding life cycle hooks.
+2. Find out how to create a life cycle hook for $onInit and $onChange.
+3. Create those live cycle hooks within the ``FlightCardComponent`` and ensure yourself that AngularJS 1.x calls them.
