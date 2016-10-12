@@ -12,9 +12,9 @@
 
 1. If you are using Windows 64 bit, just download the zip file at XXX and extract it. After that you can skip the rest of this section.
 2. In all other cases, download or clone the GIT repository at YYY:
-	a) Option 1: ``git clone YYY``
-	b) Option 2: Use the download button in the upper right corner at YYY to download a zip file. After that, extract it.
-	c) Option 3: If Option 1 and 2 doesn't work, download the zip file at ZZZ and extract it.
+	- Option 1: ``git clone YYY``
+	- Option 2: Use the download button in the upper right corner at YYY to download a zip file. After that, extract it.
+	- Option 3: If Option 1 and 2 doesn't work, download the zip file at ZZZ and extract it.
 3. After downloading or cloning the GIT repo run ``npm install`` within it.
 
 ## Running the sample
