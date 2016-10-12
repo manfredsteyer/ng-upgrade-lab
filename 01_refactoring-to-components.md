@@ -13,7 +13,7 @@ Now, your task is refactoring the rest of this solution.
 	- When Visual Studio asks you to create a build task, choose the option TypeScript.
 	- When, and only when, Visual Studio Code creates a task.json after that, update it with the following snippet:
 	 
-		
+		```	
 		{
 		    // See https://go.microsoft.com/fwlink/?LinkId=733558
 		    // for the documentation about the tasks.json format
@@ -24,6 +24,7 @@ Now, your task is refactoring the rest of this solution.
 		    "showOutput": "silent",
 		    "problemMatcher": "$tsc"
 		}
+		```
 		
 4. Switch to the console (CTRL+SHIFT+c) and start the project:
 
