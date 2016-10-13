@@ -109,7 +109,7 @@ Now, your task is refactoring the rest of this solution.
 	    public from: string = 'Hamburg';
 	    public to: string = 'Graz';
 	    public selectedFlight: Flight = null;
-	    private flightService: FlightSearchController;
+	    private flightService: FlightService;
 	    private bookingEventService: BookingEventService;
 	
 	    constructor(flightService: FlightService, bookingEventService: BookingEventService) {
@@ -142,7 +142,7 @@ Now, your task is refactoring the rest of this solution.
 
 ## Refactoring FlightSearchController to a component
 
-1. Add a exported Constant ``FlightSearchComponent`` at the end of the file ``flight-search.ts``, that provides the metadata for a component using the ``FlightSearchController`` as well as its template. In addition to that, remove the ``export`` statement from the declaration of the ``FlightSearchController``, as this controller isn't needed outside of the current file anymore:
+1. Add an exported Constant ``FlightSearchComponent`` at the end of the file ``flight-search.ts``, that provides the metadata for a component using the ``FlightSearchController`` as well as its template. In addition to that, remove the ``export`` statement from the declaration of the ``FlightSearchController``, as this controller isn't needed outside of the current file anymore:
 
 	```
 	import {FlightService} from "../services/flight.service";
@@ -159,7 +159,7 @@ Now, your task is refactoring the rest of this solution.
 	
 	export const FlightSearchComponent: angular.IComponentOptions = {
 	    controller: FlightSearchController,
-	    templateUrl: 'app/flight-search/flight-search.html'
+	    templateUrl: './flight-search.html'
 	}
 	```
 
@@ -217,7 +217,7 @@ Now, your task is refactoring the rest of this solution.
 	```
 	export const FlightCardComponent: angular.IComponentOptions = {
 	    controller: FlightCardController,
-	    templateUrl: 'app/flight-search/flight-card.directive.html',
+	    templateUrl: './flight-card.directive.html',
 	    transclude: true,
 	    bindings: {
 	        item: '=',
@@ -278,17 +278,17 @@ Now, your task is refactoring the rest of this solution.
 	    select() {
 	        this.selectedItem = this.item;
 	        if (this.selectedItemChange) {
-	            this.selectedItemChange({$event: this.selectedItem});
+	            this.selectedItemChange(this.selectedItem);
 	        }
 	    }
 	}
 	```
-2. Update the ``bindings`` within the ``FlightCardComponent`` to use unidirectional property bindings and a event handler:
+2. Update the ``bindings`` within the ``FlightCardComponent`` to use unidirectional property bindings and an event handler:
 
 	```
 	export const FlightCardComponent: angular.IComponentOptions = {
 	    controller: FlightCardController,
-	    templateUrl: 'app/flight-search/flight-card.component.html',
+	    templateUrl: './flight-card.component.html',
 	    transclude: true,
 	    bindings: {
 	        item: '<',
@@ -296,6 +296,13 @@ Now, your task is refactoring the rest of this solution.
 	        selectedItemChange: '&'
 	    }
 	}
+	```
+4. Switch to the file ``flight-search.component.html`` and update the usage of ``flight-card`` by setting up an event-handler.
+	```
+    <flight-card
+            item="f"
+            selected-item="$ctrl.selectedFlight"
+            selected-item-change="$ctrl.selectedFlight = $locals">
 	```
 3. Compile the project to make sure that there are no TypeScript errors.
 4. Refresh the project in your browser and ensure that the refactored project still works.
