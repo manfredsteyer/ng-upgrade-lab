@@ -15,12 +15,16 @@
 	- Option 1: ``git clone YYY``
 	- Option 2: Use the download button in the upper right corner at YYY to download a zip file. After that, extract it.
 	- Option 3: If Option 1 and 2 doesn't work, download the zip file at ZZZ and extract it.
-3. After downloading or cloning the GIT repo run ``npm install`` within it.
+3. After downloading or cloning the GIT repository switch to its root folder and run
+	
+	```
+	npm install
+	```
 
 ## Running the sample
 
-1. Switch to the root folder of the project. This is the folder that contains the file ``tsconfig.json``
-2. Start the project:
+1. The root folder of the repository also contains the file ``tsconfig.json``
+2. To start the project run:
 
 	```
 	npm start
