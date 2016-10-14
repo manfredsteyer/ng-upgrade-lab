@@ -2,9 +2,9 @@
 
 1. Have a look to the files ``passenger-search.component.ts`` and ``passenger-search.component.html`` in the folder ``passenger-search``. 
 
-2. Assure yourself, that the ``PassengerSearchComponent`` uses the ``PassengerCardComponent`` in the same folder as well as the ``PassengerService`` that is located in the folder ``services``. Examine also this implementations.
+2. Assure yourself that the ``PassengerSearchComponent`` uses the ``PassengerCardComponent`` that can be found in the same folder as well as the ``PassengerService`` that is located in the folder ``services``. Examine this implementations too.
 
-3. Copy the file ``passenger.service.ts`` and name it ``migrated-passenger.service.ts``. 
+3. Copy the file ``passenger.service.ts`` and name the copy ``migrated-passenger.service.ts``. 
 
 4. Open the file ``migrated-passenger.service.ts`` and add the following imports for Angular 2:
 	```
@@ -12,7 +12,7 @@
 	import {Injectable} from '@angular/core';
 	```
 
-5. Alter the class name to ``MigratedPassengerService`` and add decorate it with ``Injectable``:
+5. Alter the class name to ``MigratedPassengerService`` and decorate it with ``Injectable``:
 
 	```
 	@Injectable()
@@ -21,7 +21,7 @@
 	}
 	``` 
 
-6. Update the constructor so that it takes an Argument of ``Http`` instead of the service ``$http``:
+6. Update the constructor so that it takes an argument of ``Http`` instead of the service ``$http``:
 
 	```
     constructor(private http: Http) {
@@ -88,7 +88,7 @@
 	}
 	```
 
-14. As the ``MigratedPassengerService`` needs to be used with the preexisting ``PassengerSearchComponent`` that has been written with AngularJS 1.x, it has to be downgraded:
+14. As the ``MigratedPassengerService`` needs to be used with the preexisting ``PassengerSearchComponent`` that has been written with AngularJS 1.x, it has to be downgraded too:
 
 	```
 	// Downgrade MigratedPassengerService and register it as passengerService
@@ -103,9 +103,9 @@
 
 ## Migrating FlightEditComponent and passing an routing parameter
 
-1. Navigate to the folder ``flight-edit`` and explore the files ``flight-edit.component.ts`` as well ``flight-edit.component.html``.
+1. Navigate to the folder ``flight-edit`` and explore the files ``flight-edit.component.ts`` as well as ``flight-edit.component.html``.
 2. Copy those files and name them ``migrated-flight-edit.component.ts`` and ``migrated-flight-edit.component.html``.
-3. Open the file ``migrated-flight-edit.component.ts`` and add the following import:
+3. Open the file ``migrated-flight-edit.component.ts`` and add the following ``import``:
 	```
 	import { Component, OnInit, Input, Inject } from '@angular/core';
 	```
@@ -122,7 +122,7 @@
 	}
 	```
 
-6. Prefix the property ``id`` with ``@Input()``. This allows to pass the id into the component later. Also assign an empty object to the property flight to prevent navigating over ``undefined``: 
+6. Prefix the property ``id`` with ``@Input()``. This allows to pass the ``id`` into the component by means of data binding later. Also assign an empty object to the property ``flight`` to prevent navigating over ``undefined``: 
 
 	```
 	@Input() id: string;
@@ -131,7 +131,7 @@
 	```
 
 
-7. As the migrated component has no access to the used version of UI-Router, remove the parameter $stateParams. Also add ``@Inject('flightService')`` to the remaining parameter. This is necessary, because the FlightService is an upgraded AngularJS 1.x service registered under the name ``flightService``:
+7. As the migrated component doesn't have access to the used version of UI-Router, remove the parameter $stateParams. Also add ``@Inject('flightService')`` to the remaining parameter. This is necessary because the ``FlightService`` is an upgraded AngularJS 1.x service registered under the name ``flightService``:
 
 	```
 	//old: constructor($stateParams: any, private flightService: FlightService)
@@ -140,7 +140,7 @@
 	}
 	```
 
-8. Move the content of the constructor to a newly created method ``ngOnInit``. This method is executed after properties, like id, are bound. Remove the usage of $stateParams:
+8. Move the content of the constructor to a newly created method ``ngOnInit``. This method is executed after properties, like ``id``, have been bound. Remove the usage of ``$stateParams``:
 
 	```
 	ngOnInit() {
@@ -164,9 +164,9 @@
 	- Rename ``ng-if`` to ``*ngIf``
 	- Remove the prefix ``$ctrl.`` from data binding expressions (e. g. use ``{{id}}`` instead of ``{{$ctrl.id}}`` 
 
-10. Remove the ``tab`` element and all ``tabs`` elements within the template. We will migrate them in another exercise.
+10. Remove the ``tabs`` element and all ``tab`` elements within the template. We will migrate them in another exercise.
 
-11. Move to the file ``app.module`` and register the ``FlightEditComponent`` within the AppModule, as it is an Anguler 2 Component:
+11. Move to the file ``app.module`` and register the ``FlightEditComponent`` within the ``AppModule``, as it is an Anguler 2 Component:
 
 	```
 	@NgModule({
@@ -182,7 +182,7 @@
 	}
 	
 	```
-12. Remove the import and declaration for the ``FlightEditComponent``, as it is replaced with its migrated counterpart now:
+12. Remove the ``import`` and declaration for the ``FlightEditComponent``, as it is replaced with its migrated counterpart now:
  
 	```
 	// Remove FlightEdit
@@ -202,7 +202,7 @@
 	
 	app.directive('flightEdit', <any>upgradeAdapter.downgradeNg2Component(MigratedFlightEditComponent));
 	```
-14. Switch to the file ``app.routes.ts`` and modify the route for flight-edit. To pass the parameter id, you need a controller that provides it to the template. In the template, you can bind it to the property ``id`` of the ``flight-edit`` element:
+14. Switch to the file ``app.routes.ts`` and modify the route for ``flight-edit``. To pass the parameter ``id``, you need a controller that provides it to the template. In the template, you can bind it to the property ``id`` of the ``flight-edit`` element:
 
 	```
 		[...]
@@ -226,13 +226,14 @@
 
 ## Migrating TabComponent **
 
-1. Move the the folder ``tabs`` and explore the implementation of a ``tabs`` control that can contain several ``tab`` elements. Find out, how those components work and how they interact with each other.
+1. Move to the the folder ``tabs`` and explore the implementation of the ``tabs`` control that can contain several ``tab`` elements. Find out, how these components work and how they interact with each other.
 
 2. Copy the file ``tabs.component.ts`` and name the copy ``migrated-tabs.component.ts``.
 
 3. Migrate the two components within the file ``migrated-tabs.component.ts`` to Angular 2.
+
 4. Use the things you've learned during this tutorial for this migration and consider the following points:
-	1. You can use the ``ngAfterContentInit`` as replacement for $postLink. You can implement ``AfterContentInit`` from ``@angular/core``, which defines this method.
+	1. You can use the ``ngAfterContentInit`` as a replacement for ``$postLink``. You can implement ``AfterContentInit`` from ``@angular/core``, which defines this method.
 	2. You can use the ``ngOnInit`` as replacement for ``$onInit``. You can implement ``OnInit`` from ``@angular/core``, which defines this method.
 	3. You can get a parent component by means of dependency injection: 
 		```
@@ -244,7 +245,7 @@
 		```
 	4. Prefix properties, you want to get via data binding, with ``@Input()`` from ``@angular/core``.
 	5. The counterpart of ``ng-transclude`` in Angular 2 is ``ng-content``.
-	6. Take care of the syntax of *ngFor which differs from that of ng-repeat:
+	6. Take care of the syntax for ``*ngFor`` which differs from the one of ``ng-repeat``:
 		```
 			AngularJS 1.x: ng-repeat="tab in $ctrl.tabs"
 			Angular 2: *ngFor="let tab of tabs"
@@ -317,7 +318,7 @@
 	
 12. Compile the project to make sure that there are no TypeScript errors.
 
-13. Refresh the project in your browser and ensure yourself that the tab control works correctly within the flight-edit route.
+13. Refresh the project in your browser and ensure yourself that the ``tabs`` control works correctly within the ``flight-edit`` route.
 
 	
 	 
