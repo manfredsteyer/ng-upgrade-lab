@@ -1,6 +1,6 @@
 ## Migrating PassengerService
 
-1. Have a look to the files ``passenger-search.component.ts`` and ``passenger-search.component.html`` in the folder ``passenger-search``. 
+1. Have a look at the files ``passenger-search.component.ts`` and ``passenger-search.component.html`` in the folder ``passenger-search``. 
 
 2. Assure yourself that the ``PassengerSearchComponent`` uses the ``PassengerCardComponent`` that can be found in the same folder as well as the ``PassengerService`` that is located in the folder ``services``. Examine this implementations too.
 
@@ -38,7 +38,7 @@
 		}
 	```
 
-8. Update the creation of the variable ``urlParams``, because the new ``Http`` service uses an instance of ``UrlSearchParams`` to represent parameter. Also create an instance of ``Headers``:
+8. Update the creation of the variable ``urlParams`` because the new ``Http`` service uses an instance of ``URLSearchParams`` to represent parameters. Also create an instance of ``Headers``:
 
 	```
 	let urlParams = new URLSearchParams()
@@ -88,7 +88,7 @@
 	}
 	```
 
-14. As the ``MigratedPassengerService`` needs to be used with the preexisting ``PassengerSearchComponent`` that has been written with AngularJS 1.x, it has to be downgraded too:
+14. As the ``MigratedPassengerService`` needs to be used with the pre-existing ``PassengerSearchComponent``, which has been written with AngularJS 1.x, it has to be downgraded as well:
 
 	```
 	// Downgrade MigratedPassengerService and register it as passengerService
@@ -97,11 +97,11 @@
 
 12. Compile the project to make sure that there are no TypeScript errors.
 
-13. Refresh the project in your browser and ensure that the app uses the ``MigratedPassengerService`` now. If this is the case, you should see an corresponding debug message in the browser console when searching for passengers.
+13. Refresh the project in your browser and ensure that the app uses the ``MigratedPassengerService`` now. If this is the case you should see a corresponding debug message in the browser console when searching for passengers.
 
 
 
-## Migrating FlightEditComponent and passing an routing parameter
+## Migrating FlightEditComponent and passing a routing parameter
 
 1. Navigate to the folder ``flight-edit`` and explore the files ``flight-edit.component.ts`` as well as ``flight-edit.component.html``.
 2. Copy those files and name them ``migrated-flight-edit.component.ts`` and ``migrated-flight-edit.component.html``.
@@ -140,7 +140,7 @@
 	}
 	```
 
-8. Move the content of the constructor to a newly created method ``ngOnInit``. This method is executed after properties, like ``id``, have been bound. Remove the usage of ``$stateParams``:
+8. Move the content of the constructor to a newly created method ``ngOnInit``. This method is executed after properties like ``id`` have been bound. Remove the usage of ``$stateParams``:
 
 	```
 	ngOnInit() {
@@ -162,7 +162,7 @@
 9. Replace the template of the ``FlightEditComponent``:
 	- Rename ``ng-model`` to ``[(ngModel)]``
 	- Rename ``ng-if`` to ``*ngIf``
-	- Remove the prefix ``$ctrl.`` from data binding expressions (e. g. use ``{{id}}`` instead of ``{{$ctrl.id}}`` 
+	- Remove the prefix ``$ctrl.`` from data binding expressions (e.g. use ``{{id}}`` instead of ``{{$ctrl.id}}`` 
 
 10. Remove the ``tabs`` element and all ``tab`` elements within the template. We will migrate them in another exercise.
 
@@ -202,7 +202,7 @@
 	
 	app.directive('flightEdit', <any>upgradeAdapter.downgradeNg2Component(MigratedFlightEditComponent));
 	```
-14. Switch to the file ``app.routes.ts`` and modify the route for ``flight-edit``. To pass the parameter ``id``, you need a controller that provides it to the template. In the template, you can bind it to the property ``id`` of the ``flight-edit`` element:
+14. Switch to the file ``app.routes.ts`` and modify the route for ``flight-edit``. To pass the parameter ``id``, you need a controller that provides it to the template. In the template you can bind it to the property ``id`` of the ``flight-edit`` element:
 
 	```
 		[...]
@@ -226,15 +226,15 @@
 
 ## Migrating TabComponent **
 
-1. Move to the the folder ``tabs`` and explore the implementation of the ``tabs`` control that can contain several ``tab`` elements. Find out, how these components work and how they interact with each other.
+1. Move to the the folder ``tabs`` and explore the implementation of the ``tabs`` control that can contain several ``tab`` elements. Try to find out how these components work and how they interact with each other.
 
 2. Copy the file ``tabs.component.ts`` and name the copy ``migrated-tabs.component.ts``.
 
 3. Migrate the two components within the file ``migrated-tabs.component.ts`` to Angular 2.
 
-4. Use the things you've learned during this tutorial for this migration and consider the following points:
-	1. You can use the ``ngAfterContentInit`` as a replacement for ``$postLink``. You can implement ``AfterContentInit`` from ``@angular/core``, which defines this method.
-	2. You can use the ``ngOnInit`` as replacement for ``$onInit``. You can implement ``OnInit`` from ``@angular/core``, which defines this method.
+4. Apply what you have learned during this tutorial for this migration and consider the following points:
+	1. You can use the ``ngAfterContentInit`` as a replacement for ``$postLink``. You can implement ``AfterContentInit`` from ``@angular/core`` which defines this method.
+	2. You can use the ``ngOnInit`` as a replacement for ``$onInit``. You can implement ``OnInit`` from ``@angular/core`` which defines this method.
 	3. You can get a parent component by means of dependency injection: 
 		```
 		export class MigratedTabComponent implements OnInit {
@@ -243,7 +243,7 @@
             }
 		}
 		```
-	4. Prefix properties, you want to get via data binding, with ``@Input()`` from ``@angular/core``.
+	4. Prefix properties, which you want to get via data binding, with ``@Input()`` from ``@angular/core``.
 	5. The counterpart of ``ng-transclude`` in Angular 2 is ``ng-content``.
 	6. Take care of the syntax for ``*ngFor`` which differs from the one of ``ng-repeat``:
 		```
@@ -256,7 +256,7 @@
 	// tabs.component('tab', tabComponentDesc);
 	// tabs.component('tabs', tabsComponentDesc);
 	```
-6. In the folder ``tabs``, create a file ``migrated-tabs.module.ts`` with a module for the migrated components:
+6. In the folder ``tabs`` create a file ``migrated-tabs.module.ts`` with a module for the migrated components:
 
 	```
 	import { NgModule } from '@angular/core';
