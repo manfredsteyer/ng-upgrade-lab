@@ -201,7 +201,7 @@ Now, your task is refactoring the rest of this solution.
 ## Rename files to align with Angular 2 conventions
 
 1. Rename the file ``flight-search.ts`` to ``flight-search.component.ts`` to align with typical conventions in Angular 2.
-2. For the same reason, rename the file ``flight-search.html`` to ``flight-search.component.html``.
+2. For the same reason, rename the file ``flight-search.html`` to ``flight-search.component.html``. Don't forget to update the reference to this file within the component metadata in the file ``flight-search.component.ts``.
 3. Update references to these files within the files ``flight-search.component.ts`` and ``app.module.ts``.
 4. Compile the project to make sure that there are no TypeScript errors.
 5. Refresh the project in your browser and ensure that the refactored project still works.
@@ -260,7 +260,7 @@ Now, your task is refactoring the rest of this solution.
 ## Rename files to align with Angular 2 conventions
 
 1. Rename the file ``flight-card.directive.ts`` to ``flight-card.component.ts`` to align with typical conventions in Angular 2.
-2. For the same reason, rename the file ``flight-card.directive.html`` to ``flight-card.component.html``
+2. For the same reason, rename the file ``flight-card.directive.html`` to ``flight-card.component.html``. Don't forget to update the reference to this file within the component metadata in the file ``flight-card.component.ts``.
 3. Update references to these files within the files ``flight-card.component.ts`` and ``app.module.ts``.
 4. Compile the project to make sure that there are no TypeScript errors.
 5. Refresh the project in your browser and ensure that the refactored project still works.
