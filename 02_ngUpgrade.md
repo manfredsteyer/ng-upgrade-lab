@@ -37,7 +37,7 @@
 	}
 	```
 
-3. Note the usage of ``@Inject('flightService')`` in the last listing. ``flightService`` is the name of a service that has been written with AngularJS 1.x. It is reused together with the Angular 2 component in question.
+3. Note the usage of ``@Inject('flightService')`` in the listing above. ``flightService`` is the name of a service that has been written with AngularJS 1.x. It is reused together with the Angular 2 component in question.
 4. Add a template for this component with the name ``migrated-flight-search.component.html`` to the folder ``flight-search``:
 
 	```
@@ -72,7 +72,7 @@
 	</pre>
 	```
 
-5. Note that ``flight-card`` is the name of a preexisting AngularJS 1.x component, that is reused here.
+5. Note that ``flight-card`` is the name of a pre-existing AngularJS 1.x component which is reused here.
 6. Switch to the file ``app.module.ts`` and add the following import statements at the top:
 
 	```
@@ -109,9 +109,9 @@
 	}
 	```
 
-8. Please note, that the AppModule declares the ``MigratedFlightSearchComponent`` as well as an upgraded version of the ``FlightCardComponent`` that has been written with AngularJS 1.x.
+8. Please note that the AppModule declares the ``MigratedFlightSearchComponent`` as well as an upgraded version of the ``FlightCardComponent`` which has been written with AngularJS 1.x.
 
-8. Below the ``AppModule``, add code to upgrade the ``FlightService`` which has been written with AngularJS 1.x and should be used with Angular 2. Also, downgrade the ``MigratedFlightSearchComponent`` to make it possible to use it within the current AngularJS 1.x application.
+8. Below the ``AppModule`` add code to upgrade the ``FlightService`` which has been written with AngularJS 1.x and should be used with Angular 2. Additionally, downgrade the ``MigratedFlightSearchComponent`` in order to be able to use it within the current AngularJS 1.x application.
 
 	```
 	upgradeAdapter.upgradeNg1Provider('flightService');
@@ -142,13 +142,13 @@
 	upgradeAdapter.bootstrap(document.body, ['flight-app']);
 	```
 
-11. In the ``index.html``, remove the ``ng-app`` within the ``body`` element. This is necessary, because an Angular 1+2 application has to be bootstrapped manually.
+11. In the ``index.html`` remove the ``ng-app`` within the ``body`` element. This is necessary because an Angular 1+2 application has to be bootstrapped manually.
 12. Compile the project to make sure that there are no TypeScript errors.
-13. Refresh the project in your browser and ensure that the the app uses the ``MigratedFlightSearchComponent`` now. Make sure, that a selected flight is displayed at an orange background and displayed within the shopping basked at the end of the page.
+13. Refresh the project in your browser and ensure that the app uses the ``MigratedFlightSearchComponent`` now. Make sure that a selected flight is displayed with orange background and within the shopping basket at the end of the page.
 
 ## Using Two Way Binding in Angular 2
 
-1. Navigate to the file ``migrated-flight-search.component.html`` and assure yourself, that the element ``flight-search`` contains both, property bindings and event bindings:
+1. Navigate to the file ``migrated-flight-search.component.html`` and assure yourself that the element ``flight-search`` contains both, property bindings and event bindings:
 
 	```
 	<flight-card
@@ -164,7 +164,7 @@
 	             [(selectedItem)]="selectedFlight"></flight-card>
 	```
 
-3. Assure yourself, that the application still works as expected.
+3. Assure yourself that the application still works as expected.
 
 
 
